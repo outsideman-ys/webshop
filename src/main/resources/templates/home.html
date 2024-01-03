@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title th:text="|${title}|"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+      /* Настройка размеров выпадающего меню */
+      #fullscreenMenu {
+        width: 300px; /* Измените ширину по своему усмотрению */
+        max-height: 80vh; /* Измените максимальную высоту по своему усмотрению */
+      }
+  
+      /* Настройка размеров пунктов меню */
+      #fullscreenMenu .offcanvas-body ul li {
+        padding: 15px;
+      }
+    </style>
+
+
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+      <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+  </svg>
+  
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+<symbol id="check" viewBox="0 0 16 16">
+  <title>Check</title>
+  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+</symbol>
+</svg>
+
+<div class="container py-3">
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <img src="/images/sticker.png" class="me-2" width="40" height="40" alt="Картинка человека-павука">
+        </a>
+
+
+        <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#fullscreenMenu" aria-controls="fullscreenMenu">Открыть меню</button>
+
+        <!-- Выпадающее меню -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="fullscreenMenu" aria-labelledby="fullscreenMenuLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="fullscreenMenuLabel">Полноэкранное меню</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Пункт 1</a></li>
+              <li><a href="#" class="text-white">Пункт 2</a></li>
+              <li><a href="#" class="text-white">Пункт 3</a></li>
+              <!-- Добавьте нужное количество пунктов меню -->
+            </ul>
+          </div>
+        </div>
+
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control" placeholder="Найти..." aria-label="Search">
+        </form>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 link-dark">Корзина</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Заказы</a></li>
+        </ul>
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/sticker.png" alt="stick" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main>
+  <div class="pricing-header p-2 pb-md-4 mx-auto text-center">
+    <h2 class="display-4 fw-normal text-body-emphasis">Популярные товары</h2>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер челоувека-павука</h4>
+        </div>
+        <div class="card-body">
+          <img src="/images/sticker.png" class="img-fluid" alt="Картинка человека-павука">
+          <h3 class="card-title pricing-card-title">$8</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 8 января</li>
+            <li>4,7 оценка</li>
+            <li>1560 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер шрека</h4>
+        </div>
+        <div class="card-body">
+          <img src="images/sticker.png" class="img-fluid" alt="Картинка шрека">
+          <h3 class="card-title pricing-card-title">$5</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 4 января</li>
+            <li>4,2 оценка</li>
+            <li>120 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер Санбоя</h4>
+        </div>
+        <div class="card-body">
+          <img src="images/sticker.png" class="img-fluid" alt="Картинка Санбоя">
+          <h3 class="card-title pricing-card-title">$2</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 5 января</li>
+            <li>4,5 оценка</li>
+            <li>1500 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-header p-2 pb-md-4 mx-auto text-center">
+    <h2 class="display-4 fw-normal text-body-emphasis">Новые товары</h2>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер челоувека-павука</h4>
+        </div>
+        <div class="card-body">
+          <img src="images/sticker.png" class="img-fluid" alt="Картинка человека-павука">
+          <h3 class="card-title pricing-card-title">$8</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 8 января</li>
+            <li>4,7 оценка</li>
+            <li>1560 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер шрека</h4>
+        </div>
+        <div class="card-body">
+          <img src="images/sticker.png" class="img-fluid" alt="Картинка шрека">
+          <h3 class="card-title pricing-card-title">$5</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 4 января</li>
+            <li>4,2 оценка</li>
+            <li>120 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стикер Санбоя</h4>
+        </div>
+        <div class="card-body">
+          <img src="images/sticker.png" class="img-fluid" alt="Картинка Санбоя">
+          <h3 class="card-title pricing-card-title">$2</h3>
+          <ul class="list-unstyled mt-1 mb-3">
+            <li>Доставка: 5 января</li>
+            <li>4,5 оценка</li>
+            <li>1500 отзывов</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-header p-2 pb-md-4 mx-auto text-right">
+    <h2 class="display-4 fw-normal text-body-emphasis">Акции и новости</h2>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-body-secondary">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-body-secondary">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-12 col-md">
+    <small class="d-block mb-3 text-body-secondary">Магазин стикеров © 2023-2024</small>
+  </div>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
