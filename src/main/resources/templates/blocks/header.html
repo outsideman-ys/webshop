@@ -1,0 +1,41 @@
+<div th:fragment="header">
+<head>
+<style>  
+    /* Настройка размеров выпадающего меню */
+    #fullscreenMenu {
+      width: 35vh; /* Измените ширину по своему усмотрению */
+      max-height: 100vh; /* Измените максимальную высоту по своему усмотрению */
+    }
+
+    /* Настройка размеров пунктов меню */
+    #fullscreenMenu .offcanvas-body ul li {
+      padding: 2vh;
+    }
+  </style>
+</head>
+    <header class="p-3 mb-3 border-bottom sticky-top bg-white">
+        <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <img src="/images/sticker.png" class="me-2" width="40" height="40" alt="Картинка человека-павука">
+            </a>
+            <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#fullscreenMenu" aria-controls="fullscreenMenu">Каталог</button>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-4">
+            <input type="search" class="form-control" placeholder="Найти..." aria-label="Search">
+            </form>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-dark">Корзина</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Заказы</a></li>
+            </ul>
+
+            <div class="dropdown text-end">
+            <a href="/account" class="d-block link-dark text-decoration-none" aria-expanded="false">
+                <img src="/images/sticker.png" alt="stick" width="32" height="32" class="rounded-circle">
+            </a>
+
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
