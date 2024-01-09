@@ -10,11 +10,18 @@
 <body>
 <div class="container py-3">
     <div th:insert="blocks/header :: header"></div>
+
     <main>
-    <div class="container py-3">
         <h1>Аккаунт говнаря</h1>
-    </div>
+        <div th:each="user : ${users}" class="alert alert-info mt-2">
+            <h3 th:text="${user.name}"/>
+            <p th:text="${user.surname}"/>
+            <p th:text="${user.address}"/>
+            <a href="'/account/' + ${user.id}">Детальнее</a>
+        </div>
     </main>
+
+
 </div>
 </body>
 
