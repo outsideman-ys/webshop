@@ -16,11 +16,6 @@
   <div class="offcanvas offcanvas-start" tabindex="-1" id="fullscreenMenu" aria-labelledby="fullscreenMenuLabel">
     <div class="offcanvas-body body-content">
       <ul class="list-unstyled">
-        <!--<#list products as product>
-        <div>
-          <p>${product.getName()}}</p>
-        </div>
-        </#list>-->
         <li><a class="dropdown-item" href="#">Аниме-стикеры</a></li>
         <li><a class="dropdown-item" href="#">Стикеры героев</a></li>
         <li><a class="dropdown-item" href="#">Мемные стикеры</a></li>
@@ -31,18 +26,27 @@
     </div>
   </div>
 
+  <div class="container mt-5">
+    <div th:each="el: ${products}" class="alert alert-info mt-2">
+      <h3 th:text="${'Новинка! ' + el.name}"></h3>
+      <p th:text="${el.description}"></p>
+    </div>
+  </div>
+
   <div class="pricing-header p-2 pb-md-4 mx-auto text-center">
     <h2 class="display-4 fw-normal text-body-emphasis">Популярные товары</h2>
   </div>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    <div class="col">
+    <div th:each="el: ${products}" class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">Стикер челоувека-долбоёба</h4>
+          <h4 class="my-0 fw-normal">
+            <a th:href="'/home/' + ${el.id}" th:text="${el.name}" class="btn btn-warning"></a>
+          </h4>
         </div>
         <div class="card-body">
           <img src="/images/sticker.png" class="img-fluid" alt="Картинка человека-павука">
-          <h3 class="card-title pricing-card-title">$8</h3>
+          <h3 th:text="${el.price + ' ₽'}" class="card-title pricing-card-title"></h3>
           <ul class="list-unstyled mt-1 mb-3">
             <li>Доставка: 8 января</li>
             <li>4,7 оценка</li>

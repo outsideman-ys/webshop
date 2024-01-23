@@ -12,9 +12,9 @@ public class ProductService {
     private long ID = 0;
 
     {
-        products.add(new Product("Стикеры Мяу-Мяу", ++ID, 500, "Настоящим кошечкам понравится",
+        products.add(new Product( ++ID, "Стикеры Мяу-Мяу", 500, "Настоящим кошечкам понравится",
                 "Влад", 0 ));
-        products.add(new Product("Стикеры Гав-Гав", ++ID, 500, "Настоящим щенятам понравится",
+        products.add(new Product( ++ID,"Стикеры Гав-Гав", 500, "Настоящим щенятам понравится",
                 "Савелий", 0));
     }
 
