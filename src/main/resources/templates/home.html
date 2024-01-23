@@ -13,18 +13,7 @@
   <div th:insert="blocks/header :: header"></div>
 <main>
 
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="fullscreenMenu" aria-labelledby="fullscreenMenuLabel">
-    <div class="offcanvas-body body-content">
-      <ul class="list-unstyled">
-        <li><a class="dropdown-item" href="#">Аниме-стикеры</a></li>
-        <li><a class="dropdown-item" href="#">Стикеры героев</a></li>
-        <li><a class="dropdown-item" href="#">Мемные стикеры</a></li>
-        <li><a class="dropdown-item" href="#">Аниме-стикеры</a></li>
-        <li><a class="dropdown-item" href="#">Стикеры героев</a></li>
-        <li><a class="dropdown-item" href="#">Мемные стикеры</a></li>
-      </ul>
-    </div>
-  </div>
+
 
   <div class="container mt-5">
     <div th:each="el: ${products}" class="alert alert-info mt-2">
