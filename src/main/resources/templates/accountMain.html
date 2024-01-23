@@ -18,7 +18,11 @@
             <p th:text="${user.surname}"/>
             <p th:text="${user.address}"/>
             <a href="'/account/' + ${user.id}">Детальнее</a>
-            <a href="/account/add-product" class="nav-link px-2 link-dark">Добавить товар</a>
+        </div>
+        <div>
+            <a href="/account/add-product" class="btn btn-warning">Добавить товар</a>
+            <a href="/account/select-changeable-product" class="btn btn-warning">Редактировать товары</a>
+            <a href="/account/select-removable-product" class="btn btn-warning">Удалить товар</a>
         </div>
     </main>
 
